@@ -6,6 +6,7 @@ const path = require('path')
 require('dotenv').config({path: path.resolve(__dirname, './.env')})
 
 const studentsRoutes = require('./routes/studentsRoutes')
+const trainingRoutes = require('./routes/trainingRoutes')
 const app = express()
 
 app.use(cors())
@@ -16,6 +17,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/', studentsRoutes)
+
+app.use('/', trainingRoutes)
 
 mongoose.connect(process.env.MONGO_URL)
 .then(() => {
